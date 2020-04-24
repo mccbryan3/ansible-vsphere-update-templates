@@ -29,6 +29,20 @@
       when: template_name is defined
       register: vm_out
 
+
+    - name: Summer Donna
+      pause:
+        seconds: 30
+        
+    - name: Upgrade VM Tools on "{{ template_name }}"
+      vmware_guest_tools_upgrade:
+        hostname: "{{ vcenter_server }}"
+        username: "{{ vcenter_user }}"
+        password: "{{ vcenter_password }}"
+        datacenter: "{{ vcenter_datacenter }}"
+        validate_certs: no
+        name: "{{ template_name }}"
+
     - name: Add the host
       add_host:
         name: "{{ vm_out.instance.hw_name }}"
@@ -38,15 +52,6 @@
         ansible_user: "{{ windows_user }}"
         ansible_password: "{{ windows_user_pass }}"
       no_log: true
-
-    - name: Upgrade VM Tools on "{{ template_name }}"
-      vmware_guest_tools_upgrade:
-        hostname: "{{ vcenter_server }}"
-        username: "{{ vcenter_user }}"
-        password: "{{ vcenter_password }}"
-        datacenter: "{{ vcenter_datacenter }}"
-        validate_certs: no
-        name: "{{ template_name }}"
 
     - name: Include the windows update task
       include: tasks/tsk.win-updates-gen.yaml
