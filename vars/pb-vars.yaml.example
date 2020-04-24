@@ -1,0 +1,8 @@
+vcenter_server: 
+vcenter_user: 
+vcenter_password:
+vcenter_datacenter:
+windows_user: 
+windows_user_pass: 
+ansible_winrm_server_cert_validation: ignore
+

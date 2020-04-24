@@ -1,0 +1,1 @@
+# ansible-vsphere-update-templates
