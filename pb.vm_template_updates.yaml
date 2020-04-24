@@ -41,6 +41,7 @@
         ansible_host: "{{ vm_out.instance.ipv4 }}"
         ansible_user: "{{ windows_user }}"
         ansible_password: "{{ windows_user_pass }}"
+      no_log: true
     
 
     - name: Ping the windows box
